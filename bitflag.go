@@ -4,19 +4,19 @@
 
 package bitflag
 
-type Flag uint64
+type Flag byte
 
 // Set flag : Set(&flag, FLAG_B, FLAG_C)
 func Set(f *Flag, opts ...Flag) {
 	for _, o := range opts {
-		*f |= (1 << o)
+		*f |= o
 	}
 }
 
 // Unset flag : Unset(&flag, FLAG_B, FLAG_C)
 func Unset(f *Flag, opts ...Flag) {
 	for _, o := range opts {
-		*f &= Flag(^(1 << o))
+		*f ^= o
 	}
 }
 
@@ -24,7 +24,7 @@ func Unset(f *Flag, opts ...Flag) {
 func Isset(f Flag, opts ...Flag) (isset bool) {
 
 	for _, o := range opts {
-		if (f & (1 << o)) == 0 {
+		if f&o == 0 {
 			return false
 		}
 	}
@@ -36,7 +36,7 @@ func Isset(f Flag, opts ...Flag) (isset bool) {
 func One(f Flag, opts ...Flag) (isset bool) {
 
 	for _, o := range opts {
-		if (f & (1 << o)) > 0 {
+		if f&o > 0 {
 			return true
 		}
 	}
