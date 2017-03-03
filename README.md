@@ -2,7 +2,7 @@
 
 ## Installation
 
-`go get github.com/albulescu/go-bitflag`
+`go get github.com/mvpninjas/go-bitflag`
 
 ## API
 
