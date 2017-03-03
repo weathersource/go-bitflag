@@ -2,10 +2,12 @@ package bitflag
 
 import "testing"
 
-const FLAG_A uint64 = 1 << 1
-const FLAG_B uint64 = 1 << 2
-const FLAG_C uint64 = 1 << 3
-const FLAG_D uint64 = 1 << 4
+const (
+	FLAG_A Flag = 1 << Flag(iota)
+	FLAG_B
+	FLAG_C
+	FLAG_D
+)
 
 func TestExample(t *testing.T) {
 

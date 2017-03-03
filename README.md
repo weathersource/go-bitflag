@@ -7,13 +7,21 @@
 ## Description
 
 ```
+package main
 
-const FLAG_A uint = 1 << 1
-const FLAG_B uint = 1 << 2
-const FLAG_C uint = 1 << 3
-const FLAG_D uint = 1 << 4
+import (
+	"fmt"
+	bitflag "github.com/albulescu/go-bitflag"
+)
 
-func TestExample(t *testing.T) {
+const (
+	FLAG_A bitflag.Flag = 1 << bitflag.Flag(iota)
+	FLAG_B
+	FLAG_C
+	FLAG_D
+)
+
+func main() {
 
 	var flag bitflag.Flag
 
@@ -32,19 +40,19 @@ func TestExample(t *testing.T) {
 	bitflag.Unset(&flag, FLAG_A|FLAG_C)
 
 	if bitflag.Isset(flag, FLAG_A) {
-		t.Fatal("A")
+		fmt.Println("A")
 	}
 
 	if bitflag.Isset(flag, FLAG_B) {
-		t.Fatal("B")
+		fmt.Println("B")
 	}
 
 	if bitflag.Isset(flag, FLAG_C) {
-		t.Fatal("C")
+		fmt.Println("C")
 	}
 
 	if !bitflag.Isset(flag, FLAG_D) {
-		t.Fatal("D")
+		fmt.Println("D")
 	}
 }
 
