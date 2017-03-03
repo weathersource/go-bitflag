@@ -4,6 +4,16 @@
 
 `go get github.com/albulescu/go-bitflag`
 
+## API
+
+| Description        | Function  |
+| ------------------ |:----------|
+| Set flags | `bitflag.Set(f Flag, opts ...Flag)` |
+| Unset flags | `bitflag.Unset(f Flag, opts ...Flag)` |
+| All flags are setted | `bitflag.Unset(f Flag, opts ...Flag) bool` |
+| One of flags is setted | `bitflag.One(f Flag, opts ...Flag) bool` |
+
+
 ## Description
 
 ```
