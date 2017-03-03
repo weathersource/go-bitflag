@@ -9,7 +9,7 @@ const FLAG_D uint64 = 1 << 4
 
 func TestExample(t *testing.T) {
 
-	var flag uint64
+	var flag Flag
 
 	Set(&flag, FLAG_A)
 	Set(&flag, FLAG_B, FLAG_C)
@@ -44,7 +44,7 @@ func TestExample(t *testing.T) {
 
 func TestSet(t *testing.T) {
 
-	var flag uint64
+	var flag Flag
 
 	Set(&flag, FLAG_A)
 	Set(&flag, FLAG_B)
@@ -70,7 +70,7 @@ func TestSet(t *testing.T) {
 
 func TestUnset(t *testing.T) {
 
-	var flag uint64
+	var flag Flag
 
 	Set(&flag, FLAG_A, FLAG_B, FLAG_C)
 
@@ -92,7 +92,7 @@ func TestUnset(t *testing.T) {
 
 func TestClear(t *testing.T) {
 
-	var flag uint64
+	var flag Flag
 
 	Set(&flag, FLAG_A, FLAG_B, FLAG_C)
 

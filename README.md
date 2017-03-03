@@ -15,7 +15,7 @@ const FLAG_D uint = 1 << 4
 
 func TestExample(t *testing.T) {
 
-	var flag uint64
+	var flag bitflag.Flag
 
 	bitflag.Set(&flag, FLAG_A)
 	bitflag.Set(&flag, FLAG_B, FLAG_C)

@@ -4,22 +4,24 @@
 
 package bitflag
 
+type Flag uint64
+
 // Set flag : Set(&flag, FLAG_B, FLAG_C)
-func Set(f *uint64, opts ...uint64) {
+func Set(f *Flag, opts ...uint64) {
 	for _, o := range opts {
 		*f |= (1 << o)
 	}
 }
 
 // Unset flag : Unset(&flag, FLAG_B, FLAG_C)
-func Unset(f *uint64, opts ...uint64) {
+func Unset(f *Flag, opts ...uint64) {
 	for _, o := range opts {
-		*f &= uint64(^(1 << o))
+		*f &= Flag(^(1 << o))
 	}
 }
 
 // Flag is setted : Isset(&flag, FLAG_A), Isset(&flag, FLAG_A, FLAG_B), Isset(&flag, FLAG_A | FLAG_B)
-func Isset(f uint64, opts ...uint64) (isset bool) {
+func Isset(f Flag, opts ...uint64) (isset bool) {
 
 	for _, o := range opts {
 		if (f & (1 << o)) == 0 {
@@ -31,7 +33,7 @@ func Isset(f uint64, opts ...uint64) (isset bool) {
 }
 
 // One of opts is setted in flag : OneOf(flag, FLAG_A, FLAG_B)
-func One(f uint64, opts ...uint64) (isset bool) {
+func One(f Flag, opts ...uint64) (isset bool) {
 
 	for _, o := range opts {
 		if (f & (1 << o)) > 0 {
@@ -42,6 +44,6 @@ func One(f uint64, opts ...uint64) (isset bool) {
 	return
 }
 
-func Clear(f *uint64) {
+func Clear(f *Flag) {
 	*f = 0
 }
