@@ -10,7 +10,7 @@
 | ------------------ |:----------|
 | Set flags | `bitflag.Set(f *Flag, opts ...Flag)` |
 | Unset flags | `bitflag.Unset(f *Flag, opts ...Flag)` |
-| All flags are setted | `bitflag.Unset(f Flag, opts ...Flag) bool` |
+| All flags are setted | `bitflag.Isset(f Flag, opts ...Flag) bool` |
 | One of flags is setted | `bitflag.One(f Flag, opts ...Flag) bool` |
 | Clear all flags | `bitflag.Clear(f *Flag)` |
 
