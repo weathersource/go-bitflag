@@ -14,7 +14,7 @@
 | One of flags is setted | `bitflag.One(f Flag, opts ...Flag) bool` |
 
 
-## Description
+## Example
 
 ```
 package main
