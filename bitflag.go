@@ -1,3 +1,7 @@
+// Copyright 2017 Cosmin Albulescu.  All rights reserved.
+// Use of this source code is governed by a MIT style
+// license that can be found in the LICENSE file.
+
 package bitflag
 
 // Set flag : Set(&flag, FLAG_B, FLAG_C)
