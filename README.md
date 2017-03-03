@@ -50,10 +50,16 @@ func main() {
 	if bitflag.Isset(flag, C) {
 		fmt.Println("C")
 	}
-
+	
 	if !bitflag.Isset(flag, D) {
 		fmt.Println("D")
 	}
+	
+	bitflag.Set(&flag, C)
+	
+	if !bitflag.One(flag, D) {
+		fmt.Println("D")
+	    }
 }
 
 ```
