@@ -74,3 +74,31 @@ func main() {
 }
 
 ```
+
+
+## Example without this library 
+
+```
+
+type Flag byte
+
+const (
+	A = Flag(1 << iota)
+	B
+	B
+)
+
+var flag Flag
+
+// set A
+flag |= A
+
+// check if A setted
+if flag & A == 0 {
+	// Flag setted
+}
+
+// remove A
+flag ^= A
+
+```
