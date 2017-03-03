@@ -1,5 +1,9 @@
 # GoLang BitFlag
 
+## Installation
+
+`go get github.com/albulescu/go-bitflag`
+
 ## Description
 
 ```
