@@ -1,4 +1,4 @@
-package flag
+package bitflag
 
 // Set flag : Set(&flag, FLAG_B, FLAG_C)
 func Set(f *uint, opts ...uint) {
@@ -27,7 +27,7 @@ func Isset(f uint, opts ...uint) (isset bool) {
 }
 
 // One of opts is setted in flag : OneOf(flag, FLAG_A, FLAG_B)
-func OneOf(f uint, opts ...uint) (isset bool) {
+func One(f uint, opts ...uint) (isset bool) {
 
 	for _, o := range opts {
 		if (f & (1 << o)) > 0 {
@@ -36,4 +36,8 @@ func OneOf(f uint, opts ...uint) (isset bool) {
 	}
 
 	return
+}
+
+func Clear(f *uint) {
+	*f = 1 << 0
 }
