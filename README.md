@@ -15,43 +15,43 @@ import (
 )
 
 const (
-	FLAG_A bitflag.Flag = 1 << bitflag.Flag(iota)
-	FLAG_B
-	FLAG_C
-	FLAG_D
+	A bitflag.Flag = 1 << bitflag.Flag(iota)
+	B
+	C
+	D
 )
 
 func main() {
 
 	var flag bitflag.Flag
 
-	bitflag.Set(&flag, FLAG_A)
-	bitflag.Set(&flag, FLAG_B, FLAG_C)
-	bitflag.Set(&flag, FLAG_C|FLAG_D)
+	bitflag.Set(&flag, A)
+	bitflag.Set(&flag, B, C)
+	bitflag.Set(&flag, C|D)
 
 	bitflag.Clear(&flag)
 
-	bitflag.Set(&flag, FLAG_A, FLAG_B, FLAG_C, FLAG_D)
+	bitflag.Set(&flag, A, B, C, D)
 
-	bitflag.Unset(&flag, FLAG_A)
+	bitflag.Unset(&flag, A)
 
-	bitflag.Unset(&flag, FLAG_B, FLAG_C)
+	bitflag.Unset(&flag, B, C)
 
-	bitflag.Unset(&flag, FLAG_A|FLAG_C)
+	bitflag.Unset(&flag, A|C)
 
-	if bitflag.Isset(flag, FLAG_A) {
+	if bitflag.Isset(flag, A) {
 		fmt.Println("A")
 	}
 
-	if bitflag.Isset(flag, FLAG_B) {
+	if bitflag.Isset(flag, B) {
 		fmt.Println("B")
 	}
 
-	if bitflag.Isset(flag, FLAG_C) {
+	if bitflag.Isset(flag, C) {
 		fmt.Println("C")
 	}
 
-	if !bitflag.Isset(flag, FLAG_D) {
+	if !bitflag.Isset(flag, D) {
 		fmt.Println("D")
 	}
 }
