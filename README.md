@@ -58,8 +58,8 @@ func main() {
 	bitflag.Set(&flag, C)
 	
 	if !bitflag.One(flag, D) {
-		fmt.Println("D")
-	    }
+		fmt.Println("E")
+	}
 }
 
 ```
