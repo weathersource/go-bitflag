@@ -8,11 +8,11 @@
 
 | Description        | Function  |
 | ------------------ |:----------|
-| Set flags | `bitflag.Set(f *Flag, opts ...Flag)` |
-| Unset flags | `bitflag.Unset(f *Flag, opts ...Flag)` |
-| All flags are setted | `bitflag.Isset(f Flag, opts ...Flag) bool` |
-| One of flags is setted | `bitflag.One(f Flag, opts ...Flag) bool` |
-| Clear all flags | `bitflag.Clear(f *Flag)` |
+| Set flags | `flag.Set(opts ...Flag)` |
+| Unset flags | `flag.Unset(opts ...Flag)` |
+| All flags are setted | `flag.Isset(opts ...Flag) bool` |
+| One of flags is setted | `flag.One(opts ...Flag) bool` |
+| Clear all flags | `flag.Clear()` |
 
 
 ## Example
@@ -26,7 +26,7 @@ import (
 )
 
 const (
-	A bitflag.Flag = 1 << bitflag.Flag(iota)
+	A flag.Flag = 1 << flag.Flag(iota)
 	B
 	C
 	D
@@ -36,39 +36,39 @@ func main() {
 
 	var flag bitflag.Flag
 
-	bitflag.Set(&flag, A)
-	bitflag.Set(&flag, B, C)
-	bitflag.Set(&flag, C|D)
+	flag.Set(A)
+	flag.Set(B, C)
+	flag.Set(C|D)
 
-	bitflag.Clear(&flag)
+	flag.Clear(&flag)
 
-	bitflag.Set(&flag, A, B, C, D)
+	flag.Set(A, B, C, D)
 
-	bitflag.Unset(&flag, A)
+	flag.Unset(A)
 
-	bitflag.Unset(&flag, B, C)
+	flag.Unset(B, C)
 
-	bitflag.Unset(&flag, A|C)
+	flag.Unset(A|C)
 
-	if bitflag.Isset(flag, A) {
+	if flag.Isset(A) {
 		fmt.Println("A")
 	}
 
-	if bitflag.Isset(flag, B) {
+	if flag.Isset(B) {
 		fmt.Println("B")
 	}
 
-	if bitflag.Isset(flag, C) {
+	if flag.Isset(C) {
 		fmt.Println("C")
 	}
 	
-	if !bitflag.Isset(flag, D) {
+	if !flag.Isset(D) {
 		fmt.Println("D")
 	}
 	
-	bitflag.Set(&flag, C)
+	flag.Set(C)
 	
-	if !bitflag.One(flag, D) {
+	if !flag.One(D) {
 		fmt.Println("E")
 	}
 }

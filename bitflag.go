@@ -7,21 +7,21 @@ package bitflag
 type Flag byte
 
 // Set flag : Set(&flag, FLAG_B, FLAG_C)
-func Set(f *Flag, opts ...Flag) {
+func (f *Flag) Set(opts ...Flag) {
 	for _, o := range opts {
 		*f |= o
 	}
 }
 
 // Unset flag : Unset(&flag, FLAG_B, FLAG_C)
-func Unset(f *Flag, opts ...Flag) {
+func (f *Flag) Unset(opts ...Flag) {
 	for _, o := range opts {
 		*f ^= o
 	}
 }
 
 // Flag is setted : Isset(&flag, FLAG_A), Isset(&flag, FLAG_A, FLAG_B), Isset(&flag, FLAG_A | FLAG_B)
-func Isset(f Flag, opts ...Flag) (isset bool) {
+func (f Flag) Isset(opts ...Flag) (isset bool) {
 
 	for _, o := range opts {
 		if f&o == 0 {
@@ -33,7 +33,7 @@ func Isset(f Flag, opts ...Flag) (isset bool) {
 }
 
 // One of opts is setted in flag : OneOf(flag, FLAG_A, FLAG_B)
-func One(f Flag, opts ...Flag) (isset bool) {
+func (f Flag) One(opts ...Flag) (isset bool) {
 
 	for _, o := range opts {
 		if f&o > 0 {
@@ -44,6 +44,6 @@ func One(f Flag, opts ...Flag) (isset bool) {
 	return
 }
 
-func Clear(f *Flag) {
+func (f *Flag) Clear() {
 	*f = 0
 }

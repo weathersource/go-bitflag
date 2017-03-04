@@ -13,33 +13,31 @@ func TestExample(t *testing.T) {
 
 	var flag Flag
 
-	Set(&flag, FLAG_A)
-	Set(&flag, FLAG_B, FLAG_C)
-	Set(&flag, FLAG_C|FLAG_D)
+	flag.Set(FLAG_A)
+	flag.Set(FLAG_B, FLAG_C)
+	flag.Set(FLAG_C | FLAG_D)
 
-	Clear(&flag)
+	flag.Clear()
 
-	Set(&flag, FLAG_A, FLAG_B, FLAG_C, FLAG_D)
+	flag.Set(FLAG_A, FLAG_B, FLAG_C, FLAG_D)
 
-	Unset(&flag, FLAG_A)
+	flag.Unset(FLAG_A)
 
-	Unset(&flag, FLAG_B, FLAG_C)
+	flag.Unset(FLAG_B, FLAG_C)
 
-	Unset(&flag, FLAG_A|FLAG_C)
-
-	if Isset(flag, FLAG_A) {
+	if flag.Isset(FLAG_A) {
 		t.Fatal("A")
 	}
 
-	if Isset(flag, FLAG_B) {
+	if flag.Isset(FLAG_B) {
 		t.Fatal("B")
 	}
 
-	if Isset(flag, FLAG_C) {
+	if flag.Isset(FLAG_C) {
 		t.Fatal("C")
 	}
 
-	if !Isset(flag, FLAG_D) {
+	if !flag.Isset(FLAG_D) {
 		t.Fatal("D")
 	}
 }
@@ -48,24 +46,24 @@ func TestSet(t *testing.T) {
 
 	var flag Flag
 
-	Set(&flag, FLAG_A)
-	Set(&flag, FLAG_B)
+	flag.Set(FLAG_A)
+	flag.Set(FLAG_B)
 
-	if !Isset(flag, FLAG_A) {
+	if !flag.Isset(FLAG_A) {
 		t.Fail()
 	}
 
-	if !Isset(flag, FLAG_B) {
+	if !flag.Isset(FLAG_B) {
 		t.Fail()
 	}
 
-	Set(&flag, FLAG_A, FLAG_B)
+	flag.Set(FLAG_A, FLAG_B)
 
-	if !Isset(flag, FLAG_A, FLAG_B) {
+	if !flag.Isset(FLAG_A, FLAG_B) {
 		t.Fail()
 	}
 
-	if !One(flag, FLAG_B) {
+	if !flag.One(FLAG_B) {
 		t.Fail()
 	}
 }
@@ -74,19 +72,19 @@ func TestUnset(t *testing.T) {
 
 	var flag Flag
 
-	Set(&flag, FLAG_A, FLAG_B, FLAG_C)
+	flag.Set(FLAG_A, FLAG_B, FLAG_C)
 
-	if !Isset(flag, FLAG_A, FLAG_B, FLAG_C) {
+	if !flag.Isset(FLAG_A, FLAG_B, FLAG_C) {
 		t.Fail()
 	}
 
-	Unset(&flag, FLAG_B)
+	flag.Unset(FLAG_B)
 
-	if Isset(flag, FLAG_B) {
+	if flag.Isset(FLAG_B) {
 		t.Fail()
 	}
 
-	if !Isset(flag, FLAG_A, FLAG_C) {
+	if !flag.Isset(FLAG_A, FLAG_C) {
 		t.Fail()
 	}
 
@@ -96,15 +94,15 @@ func TestClear(t *testing.T) {
 
 	var flag Flag
 
-	Set(&flag, FLAG_A, FLAG_B, FLAG_C)
+	flag.Set(FLAG_A, FLAG_B, FLAG_C)
 
-	if !Isset(flag, FLAG_A, FLAG_B, FLAG_C) {
+	if !flag.Isset(FLAG_A, FLAG_B, FLAG_C) {
 		t.Fail()
 	}
 
-	Clear(&flag)
+	flag.Clear()
 
-	if One(flag, FLAG_A, FLAG_B, FLAG_C) {
+	if flag.One(FLAG_A, FLAG_B, FLAG_C) {
 		t.Fail()
 	}
 }
