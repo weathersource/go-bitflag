@@ -40,7 +40,7 @@ func main() {
 	flag.Set(B, C)
 	flag.Set(C|D)
 
-	flag.Clear(&flag)
+	flag.Clear()
 
 	flag.Set(A, B, C, D)
 
