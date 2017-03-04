@@ -22,7 +22,7 @@ package main
 
 import (
 	"fmt"
-	bitflag "github.com/albulescu/go-bitflag"
+	bitflag "github.com/mvpninjas/go-bitflag"
 )
 
 const (
