@@ -72,3 +72,13 @@ func TestClear(t *testing.T) {
 		t.Fail()
 	}
 }
+func TestSetAll(t *testing.T) {
+
+	var flag Flag
+
+	flag.SetAll()
+
+	if !flag.IsSet(FLAG_A, FLAG_B, FLAG_C) {
+		t.Fail()
+	}
+}

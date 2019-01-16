@@ -1,7 +1,7 @@
 package bitflag
 
 // Flag is a container for bit flags.
-type Flag uint8
+type Flag uint64
 
 // Set adds flags to Flag.
 func (f *Flag) Set(flags ...Flag) {
@@ -40,4 +40,10 @@ func (f Flag) OneOf(flags ...Flag) bool {
 // Clear removes all flags from Flag
 func (f *Flag) Clear() {
 	*f = 0
+}
+
+// SetAll sets all flags in Flag
+func (f *Flag) SetAll() {
+	f.Clear()
+	*f -= 1
 }
