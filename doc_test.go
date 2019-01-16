@@ -31,7 +31,7 @@ func Example() {
 	// C
 }
 
-func Example_Set() {
+func ExampleSet() {
 	const (
 		A = bitflag.Flag(1 << iota)
 		B
@@ -49,7 +49,7 @@ func Example_Set() {
 	// Output: Success
 }
 
-func Example_Unset() {
+func ExampleUnset() {
 	const (
 		A = bitflag.Flag(1 << iota)
 		B
@@ -67,7 +67,7 @@ func Example_Unset() {
 	// Output: Success
 }
 
-func Example_Clear() {
+func ExampleClear() {
 	const (
 		A = bitflag.Flag(1 << iota)
 		B
