@@ -1,49 +1,43 @@
-// Copyright 2017 Cosmin Albulescu.  All rights reserved.
-// Use of this source code is governed by a MIT style
-// license that can be found in the LICENSE file.
-
 package bitflag
 
-type Flag byte
+// Flag is a container for bit flags.
+type Flag uint8
 
-// Set flag : Set(&flag, FLAG_B, FLAG_C)
-func (f *Flag) Set(opts ...Flag) {
-	for _, o := range opts {
+// Set adds flags to Flag.
+func (f *Flag) Set(flags ...Flag) {
+	for _, o := range flags {
 		*f |= o
 	}
 }
 
-// Unset flag : Unset(&flag, FLAG_B, FLAG_C)
-func (f *Flag) Unset(opts ...Flag) {
-	for _, o := range opts {
+// Unset removes flags from Flag.
+func (f *Flag) Unset(flags ...Flag) {
+	for _, o := range flags {
 		*f ^= o
 	}
 }
 
-// Flag is setted : Isset(&flag, FLAG_A), Isset(&flag, FLAG_A, FLAG_B), Isset(&flag, FLAG_A | FLAG_B)
-func (f Flag) Isset(opts ...Flag) (isset bool) {
-
-	for _, o := range opts {
+// IsSet returns true if all flags are set in Flag, false otherwise.
+func (f Flag) IsSet(flags ...Flag) bool {
+	for _, o := range flags {
 		if f&o == 0 {
 			return false
 		}
 	}
-
 	return true
 }
 
-// One of opts is setted in flag : OneOf(flag, FLAG_A, FLAG_B)
-func (f Flag) One(opts ...Flag) (isset bool) {
-
-	for _, o := range opts {
+// OneOf returns true if any flag in flags is set in Flag, false otherwise.
+func (f Flag) OneOf(flags ...Flag) bool {
+	for _, o := range flags {
 		if f&o > 0 {
 			return true
 		}
 	}
-
-	return
+	return false
 }
 
+// Clear removes all flags from Flag
 func (f *Flag) Clear() {
 	*f = 0
 }
