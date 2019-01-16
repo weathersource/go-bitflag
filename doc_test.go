@@ -27,7 +27,8 @@ func Example() {
 		fmt.Println("C")
 	}
 
-	// Output: A
+	// Output:
+	// A
 	// C
 }
 
